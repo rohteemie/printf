@@ -1,9 +1,9 @@
-.TH man 3 "27 October 2020" "0.20" "_printf man page"
+.TH man 3 "22 - may - 2022" "0.20" "_printf man page"
 .SH NAME
 .B _printf
 - Formatted output conversion.
 .SH SYNOPSIS
-.B #include "Alx.h"
+.B #include "main.h"
 
 .B int _printf(const char *
 .I format
@@ -51,7 +51,7 @@ Prints a string converted to rot13
 .B %
 A '%' is written but no argument is converted. The complete version specification is '%%'
 .SH EXAMPLE
-#include "Alx.h"
+#include "main.h"
 
 _printf("%s", "my name",);
 .SH SEE ALSO
