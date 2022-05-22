@@ -1,100 +1,83 @@
+#include <unistd.h>
 #include "main.h"
-
-unsigned int convert_c(va_list args, buffer_t *output,
-		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_percent(va_list args, buffer_t *output,
-		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int convert_p(va_list args, buffer_t *output,
-		unsigned char flags, int wid, int prec, unsigned char len);
+#include <stdio.h>
 
 /**
- * convert_c - Converts an argument to an unsigned char and
- *             stores it to a buffer contained in a struct.
- * @args: A va_list pointing to the argument to be converted.
- * @flags: Flag modifiers.
- * @wid: A width modifier.
- * @prec: A precision modifier.
- * @len: A length modifier.
- * @output: A buffer_t struct containing a character array.
+ * buffer_print - print given buffer to stdout
+ * @buffer: buffer to print
+ * @nbytes: number of bytes to print
  *
- * Return: The number of bytes stored to the buffer.
+ * Return: nbytes
  */
-unsigned int convert_c(va_list args, buffer_t *output,
-		unsigned char flags, int wid, int prec, unsigned char len)
+int buffer_print(char buffer[], unsigned int nbytes)
 {
-	char c;
-	unsigned int ret = 0;
-
-	(void)prec;
-	(void)len;
-
-	c = va_arg(args, int);
-
-	ret += print_width(output, ret, flags, wid);
-	ret += _memcpy(output, &c, 1);
-	ret += print_neg_width(output, ret, flags, wid);
-
-	return (ret);
+	write(1, buffer, nbytes);
+	return (nbytes);
 }
 
 /**
- * convert_percent - Stores a percent sign to a
- *                   buffer contained in a struct.
- * @args: A va_list pointing to the argument to be converted.
- * @flags: Flag modifiers.
- * @wid: A width modifier.
- * @prec: A precision modifier.
- * @len: A length modifier.
- * @output: A buffer_t struct containing a character array.
+ * buffer_add - adds a string to buffer
+ * @buffer: buffer to fill
+ * @str: str to add
+ * @buffer_pos: pointer to buffer first empty position
  *
- * Return: The number of bytes stored to the buffer (always 1).
+ * Return: if buffer filled and emptyed return number of printed char
+ * else 0
  */
-unsigned int convert_percent(va_list args, buffer_t *output,
-		unsigned char flags, int wid, int prec, unsigned char len)
+int buffer_add(char buffer[], char *str, unsigned int *buffer_pos)
 {
-	char percent = '%';
-	unsigned int ret = 0;
+	int i = 0;
+	unsigned int count = 0, pos = *buffer_pos, size = BUFFER_SIZE;
 
-	(void)args;
-	(void)prec;
-	(void)len;
-
-	ret += print_width(output, ret, flags, wid);
-	ret += _memcpy(output, &percent, 1);
-	ret += print_neg_width(output, ret, flags, wid);
-
-	return (ret);
+	while (str && str[i])
+	{
+		if (pos == size)
+		{
+			count += buffer_print(buffer, pos);
+			pos = 0;
+		}
+		buffer[pos++] = str[i++];
+	}
+	*buffer_pos = pos;
+	return (count);
 }
 
 /**
- * convert_p - Converts the address of an argument to hex and
- *             stores it to a buffer contained in a struct.
- * @args: A va_list pointing to the argument to be converted.
- * @flags: Flag modifiers.
- * @wid: A width modifier.
- * @prec: A precision modifier.
- * @len: A length modifier.
- * @output: A buffer_t struct containing a character array.
+ * _printf - produces output according to a format
+ * @format: character string
  *
- * Return: The number of bytes stored to the buffer.
+ * Return: the number of characters printed excluding the null byte
+ * used to end output to strings
  */
-unsigned int convert_p(va_list args, buffer_t *output,
-		unsigned char flags, int wid, int prec, unsigned char len)
+int _printf(const char *format, ...)
 {
-	char *null = "(nil)";
-	unsigned long int address;
-	unsigned int ret = 0;
+	va_list ap;
+	unsigned int i = 0, buffer_pos = 0, count = 0;
+	char *res_str, *aux, buffer[BUFFER_SIZE];
 
-	(void)len;
-
-	address = va_arg(args, unsigned long int);
-	if (address == '\0')
-		return (_memcpy(output, null, 5));
-
-	flags |= 32;
-	ret += convert_ubase(output, address, "0123456789abcdef",
-			flags, wid, prec);
-	ret += print_neg_width(output, ret, flags, wid);
-
-	return (ret);
+	if (!format || !format[0])
+		return (-1);
+	va_start(ap, format);
+	aux = malloc(sizeof(char) * 2);
+	while (format && format[i])
+	{
+		if (format[i] == '%')
+		{
+			res_str = treat_format(format, &i, ap);
+			count += buffer_add(buffer, res_str, &buffer_pos);
+			free(res_str);
+		}
+		else
+		{
+			aux[0] = format[i++];
+			aux[1] = '\0';
+			count += buffer_add(buffer, aux, &buffer_pos);
+		}
+	}
+	count += buffer_print(buffer, buffer_pos);
+	free(aux);
+	va_end(ap);
+	if (!count)
+		count = -1;
+	return (count);
 }
