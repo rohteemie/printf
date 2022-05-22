@@ -9,11 +9,13 @@
  *
  * Return: nbytes
  */
+
 int buffer_print(char buffer[], unsigned int nbytes)
 {
 	write(1, buffer, nbytes);
 	return (nbytes);
 }
+
 
 /**
  * buffer_add - adds a string to buffer
@@ -24,6 +26,8 @@ int buffer_print(char buffer[], unsigned int nbytes)
  * Return: if buffer filled and emptyed return number of printed char
  * else 0
  */
+
+
 int buffer_add(char buffer[], char *str, unsigned int *buffer_pos)
 {
 	int i = 0;
@@ -41,6 +45,7 @@ int buffer_add(char buffer[], char *str, unsigned int *buffer_pos)
 	*buffer_pos = pos;
 	return (count);
 }
+
 
 /**
  * _printf - produces output according to a format
