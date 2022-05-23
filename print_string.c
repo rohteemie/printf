@@ -1,10 +1,12 @@
 #include "main.h"
+
 /**
  * _strcpy - copy string to another
  * @dest:dest
  * @src:source
  * Return: string
  */
+
 char *_strcpy(char *dest, char *src)
 {
 	int i = 0;
@@ -17,6 +19,7 @@ char *_strcpy(char *dest, char *src)
 	dest[i] = '\0';
 	return (dest);
 }
+
 /**
  * print_string - print a string
  * @modif: struct containing modifier fields
@@ -24,6 +27,7 @@ char *_strcpy(char *dest, char *src)
  *
  * Return: return pointer of the beginning of string
  */
+
 char *print_string(modifier_t *modif, va_list ap)
 {
 	char *str;
