@@ -7,6 +7,7 @@
  * @size: size of buffer
  *
  */
+
 void treat_flags(char *flags, char *buffer, int *size)
 {
 	char sign = buffer[(*size) - 1];
@@ -35,6 +36,7 @@ void treat_flags(char *flags, char *buffer, int *size)
  * @modif:struct modifier containig modifier fields
  * Return:int length
  */
+
 char *print_int(modifier_t *modif, va_list ap)
 {
 	unsigned int x;
