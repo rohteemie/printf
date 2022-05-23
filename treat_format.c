@@ -8,6 +8,7 @@
  *
  * Return: pointer to a function or NULL if not found
  */
+
 char *(*get_print_func(char c))(modifier_t *, va_list)
 {
 	int i;
@@ -43,6 +44,7 @@ char *(*get_print_func(char c))(modifier_t *, va_list)
  *
  * Return: result string formated
  */
+
 char *treat_format(const char *format, unsigned int *pos, va_list ap)
 {
 	char *(*fun_p)(modifier_t *, va_list);
