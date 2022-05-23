@@ -2,8 +2,11 @@
 
 /**
  * _realloc - reallocates a memory block
+ *
  * @ptr: pointer to memory to reallocate
+ *
  * @old_size: size of memory to reallocate
+ *
  * @new_size: new memory size
  *
  * Return: pointer to the new memory or NULL on failure
