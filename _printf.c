@@ -54,6 +54,7 @@ int buffer_add(char buffer[], char *str, unsigned int *buffer_pos)
  * Return: the number of characters printed excluding the null byte
  * used to end output to strings
  */
+
 int _printf(const char *format, ...)
 {
 	va_list ap;
