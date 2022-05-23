@@ -1,4 +1,4 @@
-# C - printf Project
+# C - Implementation of the printf Project
 ### Collaborators - Rotimi Owolabi & Temitayo Akere
  
 ### Concepts
