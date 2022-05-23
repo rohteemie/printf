@@ -5,7 +5,7 @@
  * @flags: flags string
  * @buffer: to store result
  * @size: size of buffer
- *
+ * Author - Rotimi Owolabi and Temi Akere
  */
 
 void treat_flags(char *flags, char *buffer, int *size)
