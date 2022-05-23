@@ -4,9 +4,10 @@
  * print_pointer - print pointer as hexadecimal
  * @modif: struct containing modifier fields
  * @ap: va_list pointer containing pointer to print
- *
+ * Author - Rotimi Owolabi and Temi Akere
  * Return: number of printed characters
  */
+
 char *print_pointer(modifier_t *modif, va_list ap)
 {
 	long int p, aux;
