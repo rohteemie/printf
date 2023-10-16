@@ -13,7 +13,7 @@
  * @precision: precision field positive number not including '.'
  * or -1 for '*'
  * @length: length field string composed of ['h', 'l']
- * @specifier: specifier character can one of
+ * @specifier: specifier character can be one of this below
  * ['c', 's', '%', 'd', 'i', 'b', 'u', 'o', 'x', 'X', 'S', 'p', 'r', 'R']
  *
  */

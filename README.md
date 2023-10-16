@@ -38,7 +38,7 @@ This allows for formatting of various data types with precision and control.
 
 ## Compilation
 
-Your code will be compiled this way:
+This code is compiled the foolowing way:
 `$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c`
 
 ## Let's Get Started
