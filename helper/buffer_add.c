@@ -10,7 +10,7 @@
  * else 0
  */
 
-int buffer_add(char buffer[], char *str, unsigned int *buffer_pos)
+int buffer_add(char *buffer, char *str, unsigned int *buffer_pos)
 {
 	int i = 0;
 	unsigned int count = 0;
