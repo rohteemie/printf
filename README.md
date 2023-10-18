@@ -45,6 +45,6 @@ This code is compiled the foolowing way:
 
 ## Let's Get Started
 
-![banner](https://i.ibb.co/xj75KSy/Printf-flowchar.png)
+![Program Flowchart](https://i.ibb.co/xj75KSy/Printf-flowchar.png)
 
 We invite you to explore the _Printf and discover the difference it can make in your C programming projects. This README will guide you through installation, usage, and more. If you have questions or suggestions, please feel free to reach out – we're here to support you.
