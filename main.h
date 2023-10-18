@@ -3,6 +3,8 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <unistd.h>
+#include <stdio.h>
 
 #define BUFFER_SIZE 1024
 
@@ -41,6 +43,8 @@ char *print_pointer(modifier_t *, va_list);
 char *rot13(char *s);
 int _strlen(char *s);
 char *print_rot(modifier_t *, va_list ap);
+int buffer_print(char *buffer, unsigned int nbytes);
+int buffer_add(char *buffer, char *str, unsigned int *buffer_pos);
 
 void free_modifier(modifier_t *);
 char *get_flags(const char *, unsigned int *);
