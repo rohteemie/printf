@@ -39,8 +39,8 @@ This allows for formatting of various data types with precision and control.
 ## Compilation
 
 This code is compiled the foolowing way:
-`$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c`
+`$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 helper/*.c test/main.c -o app_exec`
 
 ## Let's Get Started
 
-We invite you to explore the _Printf and discover the difference it can make in your C programming projects. This README will guide you through installation, usage, and more. If you have questions or suggestions, please feel free to reach out – we're here to support your success with _Printf.
+We invite you to explore the _Printf and discover the difference it can make in your C programming projects. This README will guide you through installation, usage, and more. If you have questions or suggestions, please feel free to reach out – we're here to support you.
