@@ -1,3 +1,5 @@
+![banner](https://i.ibb.co/wBVknP0/Printf-banner-1.png)
+
 # Introduction
 
 Welcome to my **Printf**: This is a custom implementation of the `printf` function for the C programming language!
