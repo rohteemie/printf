@@ -64,7 +64,7 @@ char *reverse(char *s);
 /**
  * struct print - multiple choice print
  * @f: char Type of print
- * @func: funct
+ * @func: funct - Address where the address of a function is stored
  */
 typedef struct print
 {
